@@ -1,3 +1,4 @@
+// declaro variables, en algunos casos las vi como const
 let nombres = document.getElementById("nombres")
 let apellidos = document.getElementById("apellidos")
 let cedula = document.getElementById("cedula")
@@ -8,7 +9,7 @@ let especialidad = document.getElementById("especialidad")
 let edad = document.getElementById("edad")
 let formularioMedicos = document.getElementById("registro-medicos-form")
 let formularioPacientes = document.getElementById("registro-pacientes-form")
-
+// Clase padre
 class Main {
     constructor(nombres, apellidos, cedula, consultorio, telefono, correo, especialidad, edad) {
         this.nombres = nombres
@@ -21,8 +22,6 @@ class Main {
         this.edad = edad
     }
 }
-
-
 
 
 // Traer medicos del local Storage
@@ -38,11 +37,11 @@ if (window.location.href.endsWith("registro-medicos.html")) {
         let valorTelefono = telefono.value
         let valorCorreo = correo.value
         let valorEspecialidad = especialidad.value
-
+        // Constructor, se hereda de la clase padre
         const medico = new Main(valorNombres, valorApellidos, valorCedula, valorConsultorio, valorTelefono, valorCorreo, valorEspecialidad)
 
         let medicos = []
-
+        
         let localMedicos = localStorage.getItem("medicos")
         if (localMedicos) {
             medicos = JSON.parse(localMedicos)
@@ -105,7 +104,7 @@ if (window.location.href.endsWith("registro-pacientes.html")) {
         let valorTelefono = telefono.value
         let valorEspecialidad = especialidad.value
         
-
+        // Preguntar a la profe !!
         const paciente = new Main(valorNombres, valorApellidos, valorCedula)
         paciente.edad=valorEdad
         paciente.telefono=valorTelefono
